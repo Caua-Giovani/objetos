@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Classes Objetos</title>
+
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        .sorteio{
+            display: flex;
+            align-items: center;
+            height: 100vh;
+            flex-direction: column;
+            justify-content: center;
+            gap: 25px;
+        }
+        .sorteio__acoes{
+            display: flex;
+            width: 100%;
+            justify-content: space-around;
+        }
+        .sorteio__acoes input{
+            padding: 10px;
+            margin: 25px;
+        }
+        .sorteio__form{
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+    </style>
+
+</head>
+<body>
+    <div class="sorteio">
+        <h1>Sorteio de Números Aleatórios</h1>
+
+        <div class="sorteio__inputs">
+            <form class="sorteio__form">
+
+                <label for="min">Valor Mínimo:</label>
+                <input class="sorteio__input--min" type="text" name="min">
+
+                <label for="max">Valor Maximo:</label>
+                <input class="sorteio__input--max" type="text" name="max">
+        
+
+                <div class="sorteio__acoes">
+
+                    <input type="submit" class="sorteio__botao--sortear" value="Sortear">
+                    <input type="reset" class="sorteio__botao--reset" value="Novo Sorteio">
+                    
+                </div>
+            </form>
+        
+        </div>
+
+        <div class="sorteio__resultado">
+            <p class="sorteio__texto--resultado"></p>
+        </div>
+
+    </div>
+
+    <script >
+        const form = document.querySelector('.sorteio__form')
+        const inputMin = document.querySelector('.sorteio__input--min')
+        const inputMax = document.querySelector('.sorteio__input--max')
+        const resultado = document.querySelector('.sorteio__texto--resultado')
+        
+        form.addEventListener('submit', (event)=>{
+            event.preventDefault()
+
+            const min = inputMin.value.trim();
+            const max = inputMax.value.trim();
+
+            if (min ==='' || max === '') {
+                resultado.textContent= 'Preencha os dois campos.';
+                return;
+            }
+
+            const numeroMin = Number(min);
+            const numeroMax = Number(max);
+
+            if (isNaN(numeroMin) || isNaN(numeroMax)) {
+                resultado.textContent= 'Digite apenas números.';
+                return;
+            }
+
+            if (numeroMin> numeroMax) {
+                resultado.textContent = 'O mínimo não pode ser maior que o máximo.';
+                return;
+            }
+
+            const numeroSorteado = Math.floor(Math.random() * (numeroMax - numeroMin + 1))+numeroMin;
+            resultado.textContent = `Número sorteado: ${numeroSorteado}`;
+        });
+    </script>
+</body>
+</html>

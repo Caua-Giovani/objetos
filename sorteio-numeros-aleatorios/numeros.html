@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sorteador de Números Aleatórios</title>
+    <link rel="stylesheet" href="sorteio-numeros-aleatorios/style.css">
+    <script defer src="/numeros.js"></script>
+
+</head>
+<body class="sorteador">
+    <header class="sorteador__header">
+        <h1 class="sorteador__title">Sorteador de Números Aleatórios</h1>
+    </header>
+
+
+    <main class="sorteador__main">
+        <section class="sorteador__intervalo intervalo">
+            <label for="valor-minimo" class="intevalo__label">Valor mínimo<span class="intervalo__valor intervalo__valor--min"></span></label>
+            <input type="range" class="intervalo__slider intervalo__slider--min" name="valor-minimo" min="1" max="100" value="1">
+
+            <label for="valor-maximo" class="intevalo__label">Valor maximo<span class="intervalo__valor intervalo__valor--max"></span></label>
+            <input type="range" class="intervalo__slider intervalo__slider--max" name="valor-maximo" min="1" max="100" value="100">
+
+        </section>
+
+        <section class="sorteador__area area">
+            <button class="area__button">Sortear</button>
+            <span class="area__numero">0</span>
+        </section>
+
+        <section class="sorteador__historico historico">
+            <h2 class="historico__title">Histórico</h2>
+            <ul class="historico__lista"></ul>
+        </section>
+    </main>
+
+
+    <footer class="sorteador__footer">
+        <button class="sorteador__limpar">Limpar histórico</button>
+    </footer>
+
+</body>
+</html>
