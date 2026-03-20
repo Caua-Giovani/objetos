@@ -15,8 +15,6 @@ const atualizarValorSlider=()=>{
     const min = Number(sliderMin.value);
     const max = Number(sliderMax.value);
 
-    console.log(min, max);
-
     document.querySelector('.intervalo__valor--min').textContent = min;
     document.querySelector('.intervalo__valor--max').textContent = max;
 
