@@ -20,8 +20,24 @@ const atualizarValorSlider=()=>{
 
 };
 
-sliderMin.addEventListener('input' , atualizarValorSlider);
-sliderMax.addEventListener('input' , atualizarValorSlider);
+// Resolução do desafio
+
+const validarIntervalo = () =>{
+    const min = Number(sliderMin.value);
+    const max = Number(sliderMax.value);
+    if(min>max){
+        sliderMin.value = max;
+        mensagem.textContent='O numero minimo deve ser menor ou igual que o maximo. Ajuste automatico efetuado.'
+        atualizarValorSlider();
+    }else {
+        mensagem.textContent=''
+        atualizarValorSlider();
+    };
+};
+
+
+sliderMin.addEventListener('input' , validarIntervalo);
+sliderMax.addEventListener('input' , validarIntervalo);
 
 atualizarValorSlider();
 
@@ -60,7 +76,7 @@ const atualizarHistorico=(lista,item,limite)=>{
 };
 
 const limparHistorico = ()=>{
-    if (confirm('Deseja realente limpar o histórico de sorteios?')){
+    if (confirm('Deseja realmente limpar o histórico de sorteios?')){
         listaNumeros.textContent='';
         elementoNumero.textContent='0'
     }
@@ -84,4 +100,5 @@ botaoSortear.addEventListener('click',()=>{
 });
 
 botaoLimparHistorico.addEventListener('click',limparHistorico)
+
 
