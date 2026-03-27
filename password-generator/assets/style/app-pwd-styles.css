@@ -1,5 +1,191 @@
-*{
+/* RESET */
+* {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    font-family: "Segoe UI", Arial, sans-serif;
+}
+
+/* BODY */
+body {
+    background: linear-gradient(135deg, #eceff1, #cfd8dc);
+    min-height: 100vh;
+}
+
+/* HEADER */
+.app-pwd__header {
+    background: #c62828;
+    color: white;
+    display: flex;
+    justify-content: space-around;
+    padding: 10px 20px;
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+}
+
+/* MAIN */
+.app-pwd__main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 30px;
+}
+
+/* LOGO */
+.app-pwd__logo {
+    width: 500px;
+    margin-bottom: 20px;
+}
+
+/* CARD PRINCIPAL */
+.app-pwd__input {
+    background: white;
+    padding: 25px;
+    border-radius: 12px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+    width: 320px;
+    text-align: center;
+}
+
+/* TEXTO */
+.app-pwd__text {
+    font-size: 15px;
+    margin-bottom: 12px;
+    color: #333;
+}
+
+/* SLIDER */
+.app-pwd__slider {
+    width: 100%;
+    margin: 15px 0;
+    accent-color: #c62828;
+}
+
+/* OPÇÕES */
+.app-pwd__options {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    margin: 15px 0;
+}
+
+/* CHECKBOX MODERNO */
+.app-pwd__option {
+    background: #f5f5f5;
+    padding: 10px;
+    border-radius: 8px;
+    font-size: 13px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    cursor: pointer;
+    transition: 0.2s;
+    border: 1px solid transparent;
+}
+
+.app-pwd__option:hover {
+    background: #eeeeee;
+    border-color: #c62828;
+}
+
+/* CHECKBOX */
+.app-pwd__checkbox {
+    accent-color: #c62828;
+    cursor: pointer;
+}
+
+/* BOTÕES */
+.app-pwd__button-container {
+    display: flex;
+    gap: 10px;
+    margin-top: 15px;
+}
+
+.app-pwd__button {
+    flex: 1;
+    padding: 10px;
+    border: none;
+    border-radius: 8px;
+    background: #2e7d32;
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.25s;
+}
+
+.app-pwd__button:hover {
+    background: #1b5e20;
+    transform: translateY(-2px);
+}
+
+/* BOTÃO LIMPAR */
+.app-pwd__button--clear {
+    background: #b0bec5;
+    color: #333;
+}
+
+.app-pwd__button--clear:hover {
+    background: #90a4ae;
+}
+
+/* RESULTADO */
+.app-pwd__result {
+    margin-top: 20px;
+    background: white;
+    padding: 20px;
+    border-radius: 12px;
+    text-align: center;
+    width: 320px;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+    display: flex;
+    flex-direction: column;
+}
+
+.app_pwd__title {
+    font-weight: bold;
+    margin-bottom: 10px;
+    display: block;
+}
+
+/* SENHA GERADA */
+.app-pwd-output {
+    font-size: 20px;
+    font-weight: bold;
+    color: #2e7d32;
+    word-break: break-all;
+    cursor: pointer;
+}
+
+/* TOOLTIP */
+.app-pwd__tooltip {
+    font-size: 12px;
+    color: #777;
+    margin-top: 8px;
+}
+
+/* HISTÓRICO */
+.app-pwd__history {
+    margin-top: 25px;
+    width: 320px;
+}
+
+.app-pwd__history-title {
+    font-size: 14px;
+    margin-bottom: 10px;
+    color: #333;
+}
+
+.app-pwd__history-list li {
+    background: white;
+    padding: 8px;
+    margin-bottom: 6px;
+    border-radius: 6px;
+    font-size: 13px;
+    box-shadow: 0 3px 8px rgba(0,0,0,0.05);
+}
+
+/* UTIL */
+.hide {
+    display: none;
 }

@@ -21,7 +21,6 @@ const charsets = {
 };
 
 
-
 /* Variáveis para armazenar a senha atual e o histórico de senhas */
 
 let novaSenha = '';
@@ -105,65 +104,79 @@ sliderElement.addEventListener('input',(e)=>{
 
 /* Função principal para gerar a senha */
 
-// String que armazenará todos os caracteres possíveis para a senha
+const generatePassword = () =>{
+
+  let selectedCharset = ''; // String que armazenará todos os caracteres possíveis para a senha
 
   /* Obter os checkboxes selecionados */
-  const generatePassword = () =>{
-    const uppercase_check = document.querySelector('.uppercase-check');
-    const lowercase_check = document.querySelector('.lowercase-check');
-    const numbers_check = document.querySelector('.numbers-check');
-    const special_check = document.querySelector('.special-check');
-  };
-
-
+  const uppercaseChecked = document.querySelector('.uppercase-check').checked;
+  const lowercaseChecked = document.querySelector('.lowercase-check').checked;
+  const numbersChecked = document.querySelector('.numbers-check').checked;
+  const specialChecked = document.querySelector('.special-check').checked;
 
   /* Construir o charset baseado nas opções selecionadas */
- 
+  if (uppercaseChecked) selectedCharset+= charsets.uppercase;
+  if (lowercaseChecked) selectedCharset+= charsets.lowercase;
+  if (numbersChecked) selectedCharset+= charsets.numbers;
+  if (specialChecked) selectedCharset+= charsets.special;
 
-  /* Se nenhuma opção estiver selecionada, selecionar todas */
- 
+    /* Se nenhuma opção estiver selecionada, selecionar todas */
+  if (!selectedCharset){
+    selectedCharset = Object.values(charsets).join('');
+    document.querySelector('.uppercase-check').checked = true;
+    document.querySelector('.lowercase-check').checked = true;
+    document.querySelector('.numbers-check').checked = true;
+    document.querySelector('.special-check').checked = true;
+  };
 
-  // Inicializa uma string vazia para armazenar a senha gerada
- 
+  let pass = ''; // Inicializa uma string vazia para armazenar a senha gerada
 
 
   /* Loop que itera pelo número de caracteres definido no slider
- Usa o operador de incremento (++) para aumentar o contador */
+  Usa o operador de incremento (++) para aumentar o contador */
+  for(let i = 0 ; i< sliderElement.value; ++ i){
 
-  
     /* Adiciona um caractere aleatório à senha:
     1. Math.random() gera um número decimal entre 0 e 1
     2. Multiplicado pelo comprimento do charset para obter um índice válido
     3. Math.floor() arredonda para baixo para obter um índice inteiro
     4. charAt() retorna o caractere na posição do índice calculado */
+    pass += selectedCharset.charAt(Math.floor(Math.random() * selectedCharset.length));
 
-  
+  };
   /* Remove a classe 'hide' para exibir o container da senha */
-  
+  containerPassword.classList.remove('hide');
 
   /* Insere a senha gerada no elemento HTML */
+  password.textContent=pass;
 
- 
   /*  Armazena a senha atual na variável global para uso posterior (ex: copiar) */
-  
+  novaSenha = pass;
   /* Gerenciamento do histórico de senhas:
   unshift() adiciona a nova senha no início do array */
- 
+  historicoSenhas.unshift(pass);
 
   /*  Limita o histórico a 3 senhas:
   Se o array tiver mais de 3 itens, pop() remove o último */
- 
+  if (historicoSenhas.length > 3){
+    historicoSenhas.pop();
+  };
   /* Atualizar a lista de histórico na interface: */
- 
+  const historico = document.querySelector('.app-pwd__history');
+  if (historico){
+
     /* Remover a classe 'hide' para exibir o histórico */
-    
+    historico.style.display = 'block';
 
     /* Cria elementos <li> para cada senha no histórico:
     1. map() transforma cada senha em um elemento HTML
     2. join('') concatena todos os elementos em uma única string */
 
+    historico.querySelector('.app-pwd__history-list').innerHTML = historicoSenhas
+    .map(senha => `<li class="app-pwd__history-item">${senha}</li>`).join('');
+  }
   
-
+};
 /* Função para copiar a senha gerada para a área de transferência */
 const copyPassword = () =>{
   alert('Senha copiada com sucesso!');  // Exibe um alerta de sucesso
@@ -199,9 +212,4 @@ const clearData = () => {
 };
 /* Adiciona o event listener para o botão de limpar */
 clearButton.addEventListener('click',clearData);
-
-
-
-
-
 
