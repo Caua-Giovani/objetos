@@ -34,9 +34,6 @@ const elBoasVindas = document.createElement('div');
 const elRelogio = document.createElement('div');
 const elDataCompleta = document.createElement('div');
 
-
-
-
 function aplicarEstilos(elemento, estilo){
     Object.assign(elemento.style,estilo);
 };
