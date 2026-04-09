@@ -9,7 +9,7 @@ const temas = {
         justifyContent: 'center',
         height: '100vh',
         margin: '0',
-        textShadow: '0 0 10px rgba(0, 255, 153, 0.5)'
+        textShadow: '0 0 20px rgba(0, 255, 153, 0.5)'
     },
     boasVindas: {
         fontSize: '24px',
@@ -27,11 +27,42 @@ const temas = {
         color: '#ffffff',
         opacity: '0.8'
     },
-    temaDark: {
-        backgroundColor: '#121212',
+    botaoDark:{
+        color:'#00ff99',
+        backgroundColor:'transparent',
+        fontSize:'20px',
+        padding:'10px',
+        borderRadius:'10px',
+        border:' solid 2px rgba(0, 255, 153, 0.5)',
+        margin:'10px'
     },
-    temaLight:{
-        backgroundColor: 'white'
+    botaoLight:{
+        color:'#000',
+        backgroundColor:'transparent',
+        fontSize:'20px',
+        padding:'10px',
+        borderRadius:'10px',
+        border:' solid 2px rgba(0, 0, 0, 0.5)',
+        margin:'10px'
+    },
+    // -------------------------------------------
+    corpoLight: {
+        backgroundColor: '#fff',
+        color: '#000',
+        fontFamily: "'Courier New', Courier, monospace",
+        display: 'flex',
+        flexDirection: 'column',
+        alignItems: 'center',
+        justifyContent: 'center',
+        height: '100vh',
+        margin: '0',
+        textShadow: '0 0 20px rgba(0, 0, 0, 0.5)'
+    },
+    dataInfoLight: {
+        fontSize: '20px',
+        marginTop: '10px',
+        color: '#000',
+        opacity: '0.8'
     }
 };
 
@@ -39,7 +70,8 @@ const elBoasVindas = document.createElement('div');
 const elRelogio = document.createElement('div');
 const elDataCompleta = document.createElement('div');
 
-const botaoInterface = document.createElement('button');
+const botaoLight = document.createElement('button');
+const botaoDark = document.createElement('button');
 
 function aplicarEstilos(elemento, estilo){
     Object.assign(elemento.style,estilo);
@@ -74,19 +106,27 @@ aplicarEstilos(document.body, temas.corpo);
 aplicarEstilos(elBoasVindas, temas.boasVindas);
 aplicarEstilos(elRelogio, temas.relogio);
 aplicarEstilos(elDataCompleta, temas.dataInfo);
+aplicarEstilos(botaoLight,temas.botaoDark);
+aplicarEstilos(botaoDark,temas.botaoDark);
 
-document.body.append(elBoasVindas,elRelogio,elDataCompleta,botaoInterface);
+document.body.append(elBoasVindas,elRelogio,elDataCompleta,botaoLight,botaoDark);
 
-botaoInterface.textContent = 'Alternar Tema'
+botaoLight.textContent = 'Tema Light';
+botaoDark.textContent = 'Tema Dark';
 
-function mudarTema(){
-    if (modo = true){
-        aplicarEstilos(document.body, temas.temaDark);
-        modo = false;
-    } else {
-        aplicarEstilos(document.body, temas.corpo)
-    }
-}
+botaoLight.addEventListener('click',(e)=>{
+  aplicarEstilos(document.body, temas.corpoLight);
+  aplicarEstilos(elDataCompleta, temas.dataInfoLight);
+  aplicarEstilos(botaoLight,temas.botaoLight);
+  aplicarEstilos(botaoDark,temas.botaoLight);
+});
 
-setInterval(inserir,1000)
+botaoDark.addEventListener('click',(e)=>{
+  aplicarEstilos(document.body, temas.corpo);
+  aplicarEstilos(elDataCompleta, temas.dataInfo);
+  aplicarEstilos(botaoLight,temas.botaoDark);
+  aplicarEstilos(botaoDark,temas.botaoDark);
+});
+
+setInterval(inserir,1000);
 
