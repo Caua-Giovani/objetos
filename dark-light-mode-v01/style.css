@@ -28,12 +28,26 @@
 .container{
     display: flex;
     flex-direction: row;
+    color: var(--text-color-light);
 }
+
+.container.dark{
+    color: var(--text-color-dark);
+}
+
+
 
 .nav-bar{
     height: 100vh;
     width: 15vw;
+    background-color: var(--sidebar-bg-light);
 }
+
+.container.dark .nav-bar{
+    background-color: var(--sidebar-bg-dark);
+}
+
+
 
 .content{
     height: 100vh;
@@ -41,9 +55,15 @@
     display: flex;
     flex-direction: column;
     gap: 20px;
-    background-color: rgb(230, 230, 230);
+    background-color: var(--primary-color-light);
     padding: 40px;
 }
+
+.container.dark .content{
+    background-color: var(--primary-color-dark);
+}
+
+
 
 ul{
     display: flex;
@@ -53,14 +73,51 @@ ul{
     padding: 40px 30px;
 }
 
+
+
 a{
-    color: black;
+    color: var(--text-color-light);
+    transition: 0.3s;
 }
+
+.container.dark .nav-bar a{
+    color: var(--text-color-dark);
+}
+
+a:hover{
+    color: var(--hover-color-light);
+}
+
+.container.dark .nav-bar a:hover{
+    color: var(--button-hover-dark);
+}
+
+
 
 .themeToggle{
     padding: 10px 20px;
     border: none;
-    background-color: rgb(214, 214, 214);
+    background-color: var(--button-bg-light);
+    width: 8%;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.container.dark .themeToggle{
+    background-color: var(--button-bg-dark);
+    color: var(--text-color-dark);
+}
+
+.themeToggle:hover{
+    padding: 10px 20px;
+    border: none;
+    background-color: var(--button-hover-light);
     width: 8%;
     cursor: pointer;
 }
+
+.container.dark .themeToggle:hover{
+    background-color: var(--button-hover-dark);
+}
+
+
