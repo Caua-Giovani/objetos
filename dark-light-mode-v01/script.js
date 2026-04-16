@@ -23,7 +23,7 @@
     // Adiciona a nova classe de tema ao body
     container.classList.toggle('dark');
 
-    if (localStorage.getItem('theme') === 'dark'){
+    if (localStorage.getItem('theme')){
       // Remove as classes de tema antigas ('light' e 'dark') para evitar conflito
       localStorage.removeItem('theme')
     } 
