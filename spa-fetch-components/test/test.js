@@ -1,5 +1,6 @@
 try{
-
+    let x=y
+    let y=x
 
 } catch(erro){
 
