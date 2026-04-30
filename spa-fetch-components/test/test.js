@@ -2,29 +2,6 @@
 
 /* Lançar um excessão (erro personalizado) */
 
-try{
-
-    let idade = 2;
-
-    if (idade < 0){
-        throw GeradorErros('Idade Invalida',1001,'VALIDACAO')
-    }
-
-} catch(erro){
-
-    let text = `
-    <strong>Nome do erro:</strong> ${erro.name} <br />
-    <strong>Mensagem:</strong> ${erro.message} <br />
-    <strong>Código</strong> ${erro.codigo}<br />
-    <strong>Tipo</strong> ${erro.tipo}<br />
-    <strong>Stack:</strong> <span>${erro.stack}</span>
-    `;
-
-    document.body.innerHTML = text
-
-};
-
-
 /* Criar uma função geradora de erro */
 
 function GeradorErros(mensagem, codigo, tipo){
@@ -37,15 +14,23 @@ function GeradorErros(mensagem, codigo, tipo){
 
 try{
 
-    let saldo = 200;
+    let saldo = 100;
 
     if (saldo < 200){
-        throw GeradorErros('Saldo Insuficiente',1100,'VALIDACAO')
+        throw GeradorErros('Saldo Insuficiente',50,'FINANCEIRO')
     }
 
 } catch(erro){
 
-    console.log(erro)
+    let text = `
+    <strong>Nome do erro:</strong> ${erro.name} <br />
+    <strong>Mensagem:</strong> ${erro.message} <br />
+    <strong>Código:</strong> ${erro.codigo}<br />
+    <strong>Tipo:</strong> ${erro.tipo}<br />
+    <strong>Stack:</strong> <span>${erro.stack}</span>
+    `;
+
+    document.body.innerHTML = text
 
 };
 
@@ -56,7 +41,27 @@ try{
 04 - Utilizar a função para carregar o componente */
 
 
+
 /* Criar uma requisição HTTP com fetch e .then */
+
+
 
 /* Criar uma requisição HTTP com fecth e async/await */
 
+const url = 'https://viacep.com.br/ws/01001000/json/'
+const consulta = fetch(url);
+console.log(consulta)
+consulta.then((resposta)=>{
+    if(!resposta.ok){
+        throw new Error('CEP Inválido')
+    }
+    const resp = resposta.json()
+    console.log(resp)
+    return resp
+}).then((dados) => {
+
+    console.log(dados)
+}).catch((error) => {
+    
+    console.warn(error)
+})
