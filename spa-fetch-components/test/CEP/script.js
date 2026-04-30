@@ -6,13 +6,14 @@
 
 const botao_then = document.querySelector('.btn_then')
 const botao_await = document.querySelector('.btn_await')
+const input_cep = document.querySelector('.input_cep')
 
 
 /* Criar uma requisição HTTP com fetch e .then */
 
 botao_then.addEventListener('click',(e)=>{
 
-    const cep = document.querySelector('.input_cep').value
+    const cep = input_cep.value
     const url = `https://viacep.com.br/ws/${cep}/json/`
 
     const consulta = fetch(url)
