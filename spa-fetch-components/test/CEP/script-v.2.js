@@ -11,7 +11,7 @@ const input_cep = document.querySelector('.input_cep')
 
 /* Criar uma requisição HTTP com fetch e .then */
 
-botao_then.addEventListener('click',(e)=>{
+botao_then.addEventListener('click',()=>{
 
     const cep = input_cep.value
     const url = `https://viacep.com.br/ws/${cep}/json/`
@@ -35,6 +35,27 @@ botao_then.addEventListener('click',(e)=>{
         console.warn(error.message)
     })
 })
+
 /* Criar uma requisição HTTP com fecth e async/await */
+
+async function funcao_await() {
+    const cep = input_cep.value
+    const url = `https://viacep.com.br/ws/${cep}/json/`
+
+    const consulta = fetch(url)
+
+    
+    let resposta = await consulta
+    if(!resposta.ok){
+        throw new Error('Erro na Requisição')
+        
+    }
+    let respObj = await resposta.json()
+    console.log(respObj)
+    
+}
+
+botao_await.addEventListener('click',funcao_await) 
+
 
 
